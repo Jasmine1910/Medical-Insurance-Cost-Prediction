@@ -1,0 +1,98 @@
+Dataset info:
+100001 rows, 54 columns
+
+age = 0 - 100
+sex = male/female
+region = Central, North, South, East, West
+urban_region = Urban, Suburban, Rural
+income = 1100 - 1061800
+education = bachelors, doctorate, hs, masters, no hs, some college
+marital_status = divorced, married, single, widowed
+employment_status = employed, retired, self-employed, unemployesd
+household: 1-9
+dependents: 0-7
+BMI： 12-50.4
+Smoker: Never, Former, Current
+alcohol_freq: Daliy None(Never),Weekly, Occasions
+visits_last_year (any medical visits):0-25
+hospitalizations_last_3yrs: 0-3
+days_hospitalized_last_3yrs: 0-21
+medication_count:0-11
+systolic_bp (blood pressure test):61-183
+diastolic_bp: 40-114
+ldl(low-density lipoprotein.): 30-248.3
+hba1c(a blood test that shows your average level of blood glucose):3.54-11.94
+plan_type (type of insurance plan): EPO, HMO, POP, POS
+network_tier (insurance plan classifications):Gold, Bronze, Sliver, Platinum
+deductible (money you need to pay first, then insurance cover the rest):500, 1000, 2000, 5000
+copay (a fix amount you need to pay for a specific covered healthcare service):10, 20, 30, 50
+policy_term_years: 1-10
+policy_changes_last_2yrs:0-2
+provider_quality (rating for insurance plan): 1.5-5
+risk_score (individuals risk of illness score): 0-1
+annual_medical_cost:55.55-65724.9
+annual_premium: 211.67-10962.55
+monthly_premium: 17.64-913.55
+cliams_count: 0-23
+avg_cliams_amount: 0-30010.53
+total_cliams_paid: 0-72517.95
+
+
+Total 11 Ilnesses recorded: 
+chroic illness
+hypertension
+diabetes
+asthma
+copd (A group of lung diseases, primarily emphysema and chronic bronchitis, that block airflow and make it difficult to breathe.)
+cardiovascular disease
+cancer
+kidney disease
+liver disease
+arthritis
+mental health.
+
+Total individuals having multiple illness:
+illness_count
+0     46532
+1     11591
+2     25988
+3      6858
+4      6253
+5      1659
+6       793
+7       227
+8        89
+9         9
+11        1
+
+proc_imaging_count
+(The general category of medical services that use technology (X-rays, magnets, sound waves) either for Diagnosis 
+or to Guide treatments (Interventional Imaging).): 0-7
+proc_surgery_count:0-6
+proc_physio_count:0-7
+proc_consult_count:0-7
+proc_lab_count:0-7
+is_high_risk:0/1 (yes/no)
+had_major_procedure:0/1 (yes/no)
+
+
+Model:~
+- Test  30%
+- Train 70%
+- Both with and without 5-Fold Cross Validation (CV)
+
+1. Linear Regression (LR): Baseline Model.
+2. Random Forest (RF): Advance Model with n_estimator = 100.
+3. XGBoost (XGB): Advance Model with n_estimator = 100.
+
+Feature Selection:~
+1. Least Absolute Shrinkage and Selection Operator (Lasso): 
+	- Doesn't increase much, but training time shrinks.
+2. Random Forest Feature Importance (RFI): 
+	- Doesn't increase much, but training time shrinks. 
+	- However, bias when training RF model.
+3. Mutual Information (MI):
+	- Increase prediction accuracy alot, but R2 decreases too.
+4. Common Feature:
+	- Compare and select out the common features among Lasso, RFI and MI.
+	- Increase prediction accuracy alot, but R2 decreases too.
